@@ -4,10 +4,10 @@ use \Jacwright\RestServer\RestException;
 
 class Controller
 {
-    private $defaultFolderPath;
+    private $folderPath;
 
     public function  __construct($folderPath) {
-        $this->defaultFolderPath = $folderPath;
+        $this->folderPath = $folderPath;
     }
 
     public function getDirContents($path) {
@@ -23,6 +23,6 @@ class Controller
 
     public function listFolders()
     {
-        return $this->getDirContents($this->defaultFolderPath);
+        return $this->getDirContents($this->folderPath);
     }
 }

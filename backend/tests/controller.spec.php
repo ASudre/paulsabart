@@ -6,18 +6,28 @@ require __DIR__ . '/../src/controller.php';
 final class ControllerTest extends TestCase
 {
   
-    public function testCreateObject()
+    public function buildFilesObject($filesArray) {
+        $filesObject = [];
+        foreach ($filesArray as $value) {
+            $parsed = explode('/', $value);
+            $filesObject[$parsed[0]] = $parsed[1];
+        }
+        return $filesObject;
+    }
+
+    public function testCreateObjectFromFilesArray()
     {
         // Given
-        $folders = new stdClass();
+        $files = [
+            '2018/theme1/pic1.jpg', '2018/theme1/pic2.jpg',
+            '2019/theme1/pic1.jpg', '2019/theme1/pic2.jpg',
+        ];
 
         // When
-        $folders->name = "John";
-        $folders->age = 30;
-        $folders->city = "New York";
-        
+        $filesObject = $this->buildFilesObject($files);
+
         // Then
-        $this->assertEquals(json_encode($folders), '{"name":"John","age":30,"city":"New York"}');
+        $this->assertEquals('{"2018":"theme1","2019":"theme1"}', json_encode($filesObject));
     }
 
     public function testRecusiveFoldersScan() {
