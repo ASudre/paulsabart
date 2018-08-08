@@ -9,7 +9,7 @@ class Routes
     private $controller;
 
     public function  __construct() {
-        $this->controller = new Controller(__DIR__ . '/../images');
+        $this->controller = new Controller(__DIR__);
     }
 
     /**
