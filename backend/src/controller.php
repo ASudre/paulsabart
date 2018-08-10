@@ -4,11 +4,6 @@ use \Jacwright\RestServer\RestException;
 
 class Controller
 {
-    private $folderPath;
-
-    public function  __construct($folderPath = '.') {
-        $this->folderPath = $folderPath;
-    }
 
     public function getDirContents($path) {
         $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path));
@@ -21,9 +16,9 @@ class Controller
         return $files;
     }
 
-    public function listFolders()
+    public function listFolders($rootFolder)
     {
-        return $this->buildFilesObjectFromFilesArray($this->getDirContents($this->folderPath));
+        return $this->buildFilesObjectFromFilesArray($this->getDirContents($rootFolder));
     }
 
     public function buildFilesObjectFromFilesArray($filesArray) {

@@ -1,0 +1,8 @@
+{
+  "production": {
+    "rootFolder": ""
+  },
+  "development": {
+    "rootFolder": "."
+  }
+}

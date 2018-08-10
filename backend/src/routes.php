@@ -2,6 +2,7 @@
 
 use \Jacwright\RestServer\RestException;
 
+$config = file_get_contents(__DIR__ . '/config.json');
 require_once('controller.php');
 
 class Routes
@@ -9,7 +10,7 @@ class Routes
     private $controller;
 
     public function  __construct() {
-        $this->controller = new Controller(__DIR__);
+        $this->controller = new Controller();
     }
 
     /**
@@ -19,7 +20,9 @@ class Routes
      */
     public function listFolders()
     {
-        return $this->controller->listFolders();
+        global $config;
+        $rootFolder = json_decode($config) -> development -> rootFolder;
+        return $this->controller->listFolders($rootFolder);
     }
 
     /**
