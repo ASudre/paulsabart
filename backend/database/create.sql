@@ -1,0 +1,11 @@
+CREATE TABLE files
+(
+  theme VARCHAR (30) NOT NULL,
+  category VARCHAR (30) NOT NULL,
+  file_path VARCHAR (255),
+  file_name VARCHAR (255),
+  comment VARCHAR (50),
+  inserted_at TIMESTAMP DEFAULT '0000-00-00 00:00:00',
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (file_name)
+)

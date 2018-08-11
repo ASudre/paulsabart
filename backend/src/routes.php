@@ -22,7 +22,7 @@ class Routes
     {
         global $config;
         $rootFolder = json_decode($config) -> development -> rootFolder;
-        return $this->controller->listFolders($rootFolder);
+        return $this->controller->saveFiles(__DIR__ . $rootFolder);
     }
 
     /**
@@ -34,3 +34,5 @@ class Routes
         throw new RestException(401, "Empty password not allowed");
     }
 }
+
+?>

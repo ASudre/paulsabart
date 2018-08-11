@@ -3,6 +3,6 @@
     "rootFolder": ""
   },
   "development": {
-    "rootFolder": "."
+    "rootFolder": "/../images"
   }
 }

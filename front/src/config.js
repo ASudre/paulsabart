@@ -1,8 +1,8 @@
 const config = {
   ftp: {
     host: 'ftpperso.free.fr',
-    user: 'zyriane',
-    password: 'latadeva',
+    user: '######',
+    password: '######',
   }
 }
 
