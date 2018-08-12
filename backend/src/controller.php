@@ -19,6 +19,10 @@ class Controller
         return $this->service->insert(folderParsing($rootFolder, getDirContents($rootFolder)));
     }
 
+    public function getFiles()
+    {
+        return $this->service->select();
+    }
 }
 
 ?>

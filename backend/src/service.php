@@ -13,7 +13,7 @@ class Service {
     $password = "######";
 
     // Create connection
-    $this->conn = new mysqli($servername, $username, $password, $username);
+    $this->conn = new mysqli($servername, $username, $password, $database);
 
     // Check connection
     if ($this->conn->connect_error) {
@@ -53,7 +53,17 @@ class Service {
 
     /* explicit close recommended */
     $stmt->close();
-    return "";
+    return "Successfully updated";
+  }
+
+  public function select() {
+    $result = $this->conn->query("SELECT * from files");
+
+    $data = array();
+    while($row = $result->fetch_assoc()) {
+      array_push($data, $row);
+    }
+    return $data;
   }
 }
 

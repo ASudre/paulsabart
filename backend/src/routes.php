@@ -18,7 +18,17 @@ class Routes
      *
      * @url GET /
      */
-    public function listFolders()
+    public function getFiles()
+    {
+        return $this->controller->getFiles();
+    }
+
+    /**
+     * Returns a JSON string object to the browser when hitting the root of the domain
+     *
+     * @url POST /
+     */
+    public function saveFiles()
     {
         global $config;
         $rootFolder = json_decode($config) -> development -> rootFolder;
