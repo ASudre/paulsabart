@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    apiService.listFiles('./images').then(list => {
+    apiService.listFiles().then(list => {
       this.setState({files: list});
     }).catch(e => {
       console.error(e);
