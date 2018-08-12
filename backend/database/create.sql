@@ -1,4 +1,6 @@
-CREATE TABLE files
+CREATE DATABASE paulsabart;
+
+CREATE TABLE paulsabart.files
 (
   theme VARCHAR (30) NOT NULL,
   category VARCHAR (30) NOT NULL,

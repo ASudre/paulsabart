@@ -1,8 +1,9 @@
 {
-  "production": {
-    "rootFolder": ""
-  },
-  "development": {
-    "rootFolder": "/../images"
+  "rootFolder": "/../images",
+  "mysql": {
+    "host": "127.0.0.1",
+    "user": "root",
+    "password": "rukshani",
+    "database": "paulsabart"
   }
 }

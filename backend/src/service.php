@@ -2,15 +2,19 @@
 
 class Service {
   private $conn;
+  private $sqlConfig;
 
   public function __construct() {
+    global $config;
+    $this->sqlConfig = json_decode($config) -> mysql;
     $this->connectToDB();
   }
 
   private function connectToDB() {
-    $servername = "sql.free.fr";
-    $username = "######";
-    $password = "######";
+    $servername = $this->sqlConfig -> host;
+    $database = $this->sqlConfig -> database;
+    $username = $this->sqlConfig -> user;
+    $password = $this->sqlConfig -> password;
 
     // Create connection
     $this->conn = new mysqli($servername, $username, $password, $database);

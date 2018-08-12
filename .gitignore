@@ -10,6 +10,9 @@ backend/vendor
 # production
 front/build
 
+# config
+config*.json
+
 # misc
 .DS_Store
 .env.local

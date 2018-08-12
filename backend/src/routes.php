@@ -31,7 +31,7 @@ class Routes
     public function saveFiles()
     {
         global $config;
-        $rootFolder = json_decode($config) -> development -> rootFolder;
+        $rootFolder = json_decode($config) -> rootFolder;
         return $this->controller->saveFiles(__DIR__ . $rootFolder);
     }
 
