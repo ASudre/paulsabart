@@ -1,7 +1,8 @@
 const config = {
   server: {
     host: 'http://zyriane.free.fr',
-    port: 80
+    port: 80,
+    imagesFolder: 'images',
   }
 }
 

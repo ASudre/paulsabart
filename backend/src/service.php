@@ -27,7 +27,7 @@ class Service {
 
   public function insert($files) {
     /* Prepared statement, stage 1: prepare */
-    if (!($stmt = $this->conn->prepare("INSERT INTO files(theme, category, file_path, file_name) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE theme=?, category=?, file_path=?;"))) {
+    if (!($stmt = $this->conn->prepare("INSERT INTO files(theme, category, file_path, file_name, updated_at) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE theme=?, category=?, file_path=?, updated_at=?;"))) {
       echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }
     
@@ -36,7 +36,9 @@ class Service {
     $category = $files[0][1];
     $file_path = $files[0][2];
     $file_name = $files[0][3];
-    if (!$stmt->bind_param("sssssss", $theme, $category, $file_path, $file_name, $theme, $category, $file_path)) {
+    $date = new DateTime();
+    $updated_at = $date->format('Y-m-d H:i:s');
+    if (!$stmt->bind_param("sssssssss", $theme, $category, $file_path, $file_name, $updated_at, $theme, $category, $file_path, $updated_at)) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
 
@@ -54,9 +56,24 @@ class Service {
           echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
       }
     }
-
     /* explicit close recommended */
     $stmt->close();
+
+    // Clean removed images
+    if (!($stmt = $this->conn->prepare("DELETE FROM files where updated_at <> ?"))) {
+      echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+
+    if (!$stmt->bind_param("s", $updated_at)) {
+      echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    if (!$stmt->execute()) {
+      echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    $stmt->close();
+
     return "Successfully updated";
   }
 

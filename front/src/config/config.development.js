@@ -3,6 +3,7 @@ const config = {
     host: 'http://localhost',
     port: 8000,
     cors: 'no-cors',
+    imagesFolder: 'images',
   }
 }
 

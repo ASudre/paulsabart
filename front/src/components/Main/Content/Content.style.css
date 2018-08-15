@@ -1,0 +1,25 @@
+.content {
+  padding: 0 10px;
+  overflow-y: scroll;
+  width: 100%;
+  border-left: 1px solid black;
+}
+
+.images {
+  text-align: center;
+}
+
+.images img {
+  height: 200px;
+  border: 1px solid black;
+}
+
+.themes {
+  display: flex;
+  flex-direction: column;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+}

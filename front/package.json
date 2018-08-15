@@ -1,26 +1,32 @@
 {
-  "name": "paulsabart",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-scripts": "1.1.4"
+  "name": "front_b",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "file-loader": "^1.1.11",
+    "style-loader": "^0.22.1",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "api": "php -S localhost:9000"
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production"
   },
-  "devDependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint": "^4.1.1",
-    "eslint-config-react-app": "^2.1.0",
-    "eslint-plugin-flowtype": "^2.34.1",
-    "eslint-plugin-import": "^2.6.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.1.0"
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.5.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-image-gallery": "^0.8.10",
+    "to-snake-case": "^1.0.0",
+    "webpack-dev-server": "^3.1.5"
   }
 }
