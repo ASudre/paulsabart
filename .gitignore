@@ -8,7 +8,7 @@ backend/vendor
 /coverage
 
 # production
-front/build
+front/dist/**/*
 
 # config
 config*.json
