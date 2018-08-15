@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import style from './Main.style.css';
+import './Main.style.scss';
 
 import apiService from '../../services/api.service';
 import Menu from './Menu/Menu.component';
@@ -25,11 +25,11 @@ class Main extends Component {
 
   render() {
     return (
-      <div className={style.main}>
-        <div className={style.leftMenu} >
+      <div className="main">
+        <div className="leftMenu" >
           <Menu files={this.state.files}/>
         </div>
-        <Content className={style.content} files={this.state.files}/>
+        <Content className="content" files={this.state.files}/>
       </div>
     );
   }

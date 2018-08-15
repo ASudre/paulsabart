@@ -3,18 +3,12 @@
   flex-direction: column;
 }
 
-.header {
-  background: tomato;
-}
-
 .footer {
-  background: lightgreen;
   flex: none;
 }
 
 .main {
   display: flex;
   flex-direction: row;
-  background: deepskyblue;
   flex: auto;
 }

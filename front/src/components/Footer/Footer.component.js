@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import style from './Footer.style.css';
+import './Footer.style.scss';
 
 class Footer extends Component {
 
   render() {
     return (
-      <footer className={style.footer}>
+      <footer className="footer">
         <div>@2018</div>
       </footer>
     );

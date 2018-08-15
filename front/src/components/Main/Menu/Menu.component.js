@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import toSnakeCase from 'to-snake-case';
 
-import style from './Menu.style.css';
+import './Menu.style.scss';
 
 export default (props) => (
-  <div className={style.menu}>
+  <div className="menu">
     {Object.keys(props.files).map(theme => (
     <div key={theme}>
       <a href={`#${toSnakeCase(theme)}`} >{theme}</a>
