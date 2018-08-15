@@ -9,9 +9,11 @@
   text-align: center;
 }
 
-.images img {
-  height: 200px;
-  border: 1px solid black;
+.images {
+  img {
+    height: 200px;
+    border: 1px solid black;
+  }
 }
 
 .themes {

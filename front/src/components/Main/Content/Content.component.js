@@ -1,8 +1,25 @@
 import React, { Component } from 'react';
-import './Content.style.scss';
 import toSnakeCase from 'to-snake-case';
+import Gallery from 'react-grid-gallery';
 
+import './Content.style.scss';
 import config from '../../../config/config';
+
+function buildImagePath(theme, category, file) {
+  return `${config.server.host}:${config.server.port}/${config.server.imagesFolder}/${theme}/${category}${file.file_path ? `/${file.file_path}` : ''}/${file.file_name}`;
+}
+
+function buildSlideShowFromCategoryFiles(theme, category, categoryFiles) {
+  return categoryFiles.reduce((files, file) => ([
+    ...files,
+    {
+      src: buildImagePath(theme, category, file),
+      thumbnail: buildImagePath(theme, category, file),
+      thumbnailWidth: 320,
+      caption: file.comment,
+    },
+  ]), []);
+}
 
 export default (props) => (
   <div className="content">
@@ -15,12 +32,10 @@ export default (props) => (
               <div key={category}>
                 <h2 id={toSnakeCase(`${theme}${category}`)}>{category}</h2>
                 <div className="categories">
-                  {props.files[theme][category].map(file => (
-                    <div key={file.file_name} className="images">
-                      <img src={buildImagePath(theme, category, file)} className="img" />
-                      <p>{file.comment}</p>
-                    </div>
-                  ))}
+                  <Gallery 
+                    images={buildSlideShowFromCategoryFiles(theme, category, props.files[theme][category])}
+                    enableImageSelection={false}
+                  />
                 </div>
               </div>
             )) : null
@@ -30,7 +45,3 @@ export default (props) => (
     ))}
   </div>
 );
-
-function buildImagePath(theme, category, file) {
-  return `${config.server.host}:${config.server.port}/${config.server.imagesFolder}/${theme}/${category}${file.file_path ? `/${file.file_path}` : ''}/${file.file_name}`;
-}
