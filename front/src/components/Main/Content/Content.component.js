@@ -6,7 +6,7 @@ import './Content.style.scss';
 import config from '../../../config/config';
 
 function buildImagePath(theme, category, file) {
-  return `${config.server.host}:${config.server.port}/${config.server.imagesFolder}/${theme}/${category}${file.file_path ? `/${file.file_path}` : ''}/${file.file_name}`;
+  return `${config.server.host}:${config.server.port}${config.server.path ? `/${config.server.path}` : ''}/${config.server.imagesFolder}/${theme}/${category}${file.file_path ? `/${file.file_path}` : ''}/${file.file_name}`;
 }
 
 function buildSlideShowFromCategoryFiles(theme, category, categoryFiles) {
