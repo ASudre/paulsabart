@@ -9,9 +9,8 @@ class Header extends Component {
     return (
       <header className="header">
         <img src={logo} className="headerLogo" alt="logo" />
-        <div className="subTitle">
-          <div>Atelier peinture de l'Université Paul Sabatier.</div>
-          <div>Villa du SCAS le mardi de 17h à 20h.</div>
+        <div className="subtitle">
+          {this.props.children}
         </div>
       </header>
     );

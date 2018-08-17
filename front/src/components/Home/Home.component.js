@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import toSnakeCase from 'to-snake-case';
 import Gallery from 'react-grid-gallery';
 
-import './Content.style.scss';
-import config from '../../../config/config';
+import './Home.style.scss';
+import config from '../../config/config';
 
 function buildImagePath(theme, category, file) {
   return `${config.server.host}:${config.server.port}${config.server.path ? `/${config.server.path}` : ''}/${config.server.imagesFolder}/${theme}/${category}${file.file_path ? `/${file.file_path}` : ''}/${file.file_name}`;
@@ -32,7 +32,7 @@ export default (props) => (
               <div key={category}>
                 <h2 id={toSnakeCase(`${theme}${category}`)}>{category}</h2>
                 <div className="categories">
-                  <Gallery 
+                  <Gallery
                     images={buildSlideShowFromCategoryFiles(theme, category, props.files[theme][category])}
                     enableImageSelection={false}
                   />

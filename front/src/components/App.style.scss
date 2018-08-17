@@ -1,14 +1,43 @@
+$font-color: #363946;
+
 .app {
+  color: $font-color;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+
+  .menu-content {
+    display: flex;
+    flex-direction: row;
+    height: 100%;    
+  }
+}
+
+.right-content {
+  overflow-y: scroll;
+  border-left: 1px solid #363946;
 }
 
 .footer {
   flex: none;
 }
 
-.main {
-  display: flex;
-  flex-direction: row;
-  flex: auto;
+@media only screen and (max-width: 600px) {
+  .menu {
+      display: none;
+  }
+  .header {
+    .subtitle {
+      display: initial;
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .header {
+    .subtitle {
+      display: none
+    }
+  }
 }
