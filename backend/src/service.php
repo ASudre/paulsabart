@@ -78,7 +78,7 @@ class Service {
   }
 
   public function select() {
-    $result = $this->conn->query("SELECT * from files");
+    $result = $this->conn->query("SELECT * from files order by theme, category, file_name");
 
     $data = array();
     while($row = $result->fetch_assoc()) {
