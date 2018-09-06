@@ -9,5 +9,5 @@ CREATE TABLE paulsabart.files
   comment VARCHAR (255),
   inserted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NULL DEFAULT NULL,
-  PRIMARY KEY (file_name)
+  PRIMARY KEY (file_name, category)
 )
