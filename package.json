@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "generateDoc": "markdown doc.md > ./front/dist/doc.html"
+  },
+  "devDependencies": {
+    "markdown-to-html": "^0.0.13"
+  }
+}
