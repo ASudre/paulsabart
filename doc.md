@@ -14,7 +14,7 @@
 
 ## Add the comments
 - connect on `sql.free.fr` with the usual credentials
-- click on files in the side menu, you should see all the uploaded files
+- click on `files` in the side menu, you should see all the uploaded files
 - click `check all` at the end of the page then click on the little pen on the right
 - you can then edit the `comment` line for each file
 - save by clicking on `go` at the end of the page
