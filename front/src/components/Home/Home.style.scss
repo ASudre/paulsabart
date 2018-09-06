@@ -1,6 +1,25 @@
 .content {
   padding: 0 10px;
-  overflow-y: scroll;
+
+  >div {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      background-color: #f0bbbb;
+      border-radius: 10px;
+      padding: 5px;
+      align-self: flex-start;
+      margin: 20px 0 0px 0;
+    }
+  
+    h2 {
+      background-color: #f0dfdf;
+      border-radius: 10px;
+      padding: 5px;
+      text-align: center;
+    }
+  }
 }
 
 .images {
@@ -22,4 +41,5 @@
 .categories {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
