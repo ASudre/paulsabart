@@ -17,6 +17,7 @@ function buildSlideShowFromCategoryFiles(theme, category, categoryFiles) {
       thumbnail: buildImagePath(theme, category, file),
       thumbnailWidth: 320,
       caption: file.comment,
+      thumbnailCaption: file.comment,
     },
   ]), []);
 }
