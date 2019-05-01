@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Header from './components/Header/Header.component';
 import Page from './components/Page/Page.component';
 import Footer from './components/Footer/Footer.component';
+import Menu from './components/Menu/Menu.component';
+import Slideshow from './components/Slideshow/Slideshow.component';
 
 const Gutter = styled.div`
   width: 95px;
@@ -23,10 +25,19 @@ const ContentContainer = styled.div`
   height: 100vh;
 `
 
-const PageContainer = styled.div`
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+`
+
+const MenuContainer = styled.div`
   overflow-y: scroll;
-  flex: auto;
   padding: 30px;
+`
+
+const ScrollingContainer = styled.div`
+  overflow-y: scroll;
 `
 
 class App extends Component {
@@ -38,39 +49,101 @@ class App extends Component {
           <Header
             title="PaulSabArt"
           />
-          <PageContainer>
-            <Page
-              pictures={[{
-                alt: "le bain",
-                src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Cecile%20(Acrylique).jpg",
+          <Page
+            pictures={[{
+              alt: "le bain",
+              src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Cecile%20(Acrylique).jpg",
+            },
+            {
+              alt: "terrasse",
+              src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Michel%20(Acrylique).jpg",
+              artist: "Michel Sudre",
+              title: "Véranda",
+              technique: "acrylique",
+            },
+            {
+              alt: "other",
+              src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Yves%20(Acrylique).jpg",
+            },
+            {
+              alt: "other",
+              src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Yves%20(Acrylique).jpg",
+            },
+            {
+              alt: "other",
+              src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Yves%20(Acrylique).jpg",
+            },
+            {
+              alt: "other",
+              src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Yves%20(Acrylique).jpg",
+            },
+            {
+              alt: "other",
+              src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Yves%20(Acrylique).jpg",
+            }]}
+            menu={[
+              {
+                year: 2019,
+                title: "Toulouse Lautrec"
               },
               {
-                alt: "terrasse",
-                src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Michel%20(Acrylique).jpg",
-                artist: "Michel Sudre",
-                title: "Véranda",
-                technique: "acrylique",
+                year: 2019,
+                title: "Photos anciennes"
               },
               {
-                alt: "other",
-                src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Yves%20(Acrylique).jpg",
-              }]}
-              menu={[
-                {
-                  year: 2019,
-                  title: "Toulouse Lautrec"
-                },
-                {
-                  year: 2019,
-                  title: "Photos anciennes"
-                },
-                {
-                  year: 2018,
-                  title: "Vie en rose",
-                }
-              ]}
-            />
-          </PageContainer>
+                year: 2019,
+                title: "Vie en rose",
+              },
+              {
+                year: 2019,
+                title: "Toulouse Lautrec"
+              },
+              {
+                year: 2019,
+                title: "Photos anciennes"
+              },
+              {
+                year: 2018,
+                title: "Vie en rose",
+              },
+              {
+                year: 2018,
+                title: "Toulouse Lautrec"
+              },
+              {
+                year: 2018,
+                title: "Photos anciennes"
+              },
+              {
+                year: 2018,
+                title: "Vie en rose",
+              },
+              {
+                year: 2018,
+                title: "Toulouse Lautrec"
+              },
+              {
+                year: 2018,
+                title: "Photos anciennes"
+              },
+              {
+                year: 2018,
+                title: "Vie en rose",
+              },
+              {
+                year: 2018,
+                title: "Toulouse Lautrec"
+              },
+              {
+                year: 2017,
+                title: "Photos anciennes"
+              },
+              {
+                year: 2017,
+                title: "Vie en rose",
+              }
+            ]}
+          />
           <Footer
             content={["Toulouse", "Université Paul Sabatier", "Villa du SCAS de 17h à 20h"]}
           />

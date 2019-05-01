@@ -12,6 +12,7 @@ type Props = {
 const PageContainer = styled.div`
   display: flex;
   flex-direction: row;
+  height: 100%;
 `
 
 const SlideshowContainer = styled.div`

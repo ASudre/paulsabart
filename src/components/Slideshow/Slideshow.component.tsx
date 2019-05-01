@@ -10,17 +10,24 @@ type Props = {
   selectedPictureSrc?: string,
 }
 
+const ScrollingContainer = styled.div`
+  overflow-y: scroll;
+  height: 100%;
+`
+
 const SlideshowContainer = styled.div`
+  overflow: none;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 100%;
 `
 
 const PicturesContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  > img {
+  > div {
     &:not(:first-child) {
       margin: 0 0 0 20px;
     }
@@ -50,16 +57,20 @@ export default function Slideshow(props: Props) {
         technique={selectedPicture.technique}
       ></PictureInfo>
       <PicturesContainer>
-        <Gallery
-          pictures={pictures}
-          selectedPictureSrc={selectedPictureSrc}
-          thumbnails
-          onClick={handleClick}
-        />
-        <Picture
-          {...(selectedPicture)}
-          selected
-        />
+        <ScrollingContainer>
+          <Gallery
+            pictures={pictures}
+            selectedPictureSrc={selectedPictureSrc}
+            thumbnails
+            onClick={handleClick}
+          />
+        </ScrollingContainer>
+        <ScrollingContainer>
+          <Picture
+            {...(selectedPicture)}
+            selected
+          />
+        </ScrollingContainer>
       </PicturesContainer>
     </SlideshowContainer>
   )

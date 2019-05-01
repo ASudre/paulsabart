@@ -9,7 +9,10 @@ type Props = {
 }
 
 const MenuContainer = styled.div`
-  white-space: nowrap;
+  display: inline-block;
+  height: 100%;
+  min-width: 300px;
+  overflow-y: auto;
 `
 
 const Item = styled.div`
@@ -34,8 +37,17 @@ const UnSelectedItem = styled(Item)`
 const Separator = styled.div`
   width: 52px;
   height: 0;
-  border-bottom: solid 1px black;
+  border-bottom: solid 1px;
   margin: 0 5px 0 0;
+`
+
+const YearSeparator = styled(Separator)`
+  border-color: black;
+`
+
+const TitleSeparator = styled(Separator)`
+  width: 200px;
+  border-color: #80808029;
 `
 
 const Year = styled.div`
@@ -64,7 +76,7 @@ export default function Menu(props: Props) {
       {props.items.map((i, index, arr) => (
         <div key={i.title}>
           {showYear(index, arr) ? <YearContainer>
-            <Separator></Separator>
+            <YearSeparator></YearSeparator>
             <Year>{i.year}</Year>
           </YearContainer> : null}
           <Item>
@@ -72,6 +84,8 @@ export default function Menu(props: Props) {
               <SelectedItem>{i.title}</SelectedItem> :
               <UnSelectedItem>{i.title}</UnSelectedItem>
             }
+            {(index != arr.length - 1 && !showYear(index + 1, arr))
+              && <TitleSeparator></TitleSeparator>}
           </Item>
         </div>
       ))}
