@@ -13,6 +13,7 @@ const PictureInfoContainer = styled.div`
       margin: 5px 0 0 0;
     }
   }
+  width: 100%;
 `
 
 const TextFormat = styled.div`

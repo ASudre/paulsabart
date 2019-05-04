@@ -8,13 +8,6 @@ type Props = {
   selectedIndex: number,
 }
 
-const MenuContainer = styled.div`
-  display: inline-block;
-  height: 100%;
-  min-width: 300px;
-  overflow-y: auto;
-`
-
 const Item = styled.div`
   font-family: Helvetica Neue, Regular;
   font-size: 30px;
@@ -72,7 +65,7 @@ const showYear = (index: number, array: MenuItem[]) =>
 
 export default function Menu(props: Props) {
   return (
-    <MenuContainer className="menu">
+    <div>
       {props.items.map((i, index, arr) => (
         <div key={i.title}>
           {showYear(index, arr) ? <YearContainer>
@@ -89,6 +82,6 @@ export default function Menu(props: Props) {
           </Item>
         </div>
       ))}
-    </MenuContainer>
+    </div>
   )
 }

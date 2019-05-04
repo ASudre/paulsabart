@@ -32,6 +32,7 @@ const PictureInfoContainer = styled.div`
   }
   @media ${devices.laptopL} {
     display: initial;
+    padding: 20px 20px 20px 60px;
   }
 `
 
@@ -39,6 +40,9 @@ const PicturesContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  @media ${devices.tablet} {
+    padding: 20px 20px 20px 0;
+  }
   > div {
     &:not(:first-child) {
       margin: 0 0 0 20px;

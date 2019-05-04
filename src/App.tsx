@@ -4,11 +4,17 @@ import styled from 'styled-components';
 import Header from './components/Header/Header.component';
 import Page from './components/Page/Page.component';
 import Footer from './components/Footer/Footer.component';
-import Menu from './components/Menu/Menu.component';
-import Slideshow from './components/Slideshow/Slideshow.component';
+
+import { devices } from './breakpoints';
 
 const Gutter = styled.div`
   width: 95px;
+  @media ${devices.mobileS} {
+    display: none;
+  }
+  @media ${devices.mobileL} {
+    display: inherit;
+  }
 `
 
 const AppContainer = styled.div`

@@ -18,18 +18,24 @@ const GalleryContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  > * {
+    &:not(:first-child) {
+      margin: 20px 0 0 0;
+    }
+  }
 `;
 
 const PictureContainer = styled.div`
-  padding-bottom: 20px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   @media ${devices.mobileS} {
     flex-direction: column;
+    align-items: center;
   }
   @media ${devices.tablet} {
     flex-direction: row;
+    align-items: flex-start;
   }
 `;
 

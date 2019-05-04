@@ -1,15 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { devices } from '../../breakpoints';
+
 const FooterContainer = styled.div`
   box-shadow: 0 -3px 6px 0 rgba(0, 0, 0, 0.16);
   padding: 13px 20px;
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  @media ${devices.tablet} {
+    font-size: 20px;
+  }
+`
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `
 
 const Content = styled.div`
   font-family: Helvetica Neue, Regular;
-  font-size: 20px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -25,7 +36,9 @@ export default function Footer(props: Props) {
   return (
     <FooterContainer>
       {props.content.map(m => (
-        <Content key={m}>{m}</Content>
+        <ContentContainer>
+          <Content key={m}>{m}</Content>
+        </ContentContainer>
       ))}
     </FooterContainer>
   )

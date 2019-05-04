@@ -23,17 +23,17 @@ const MenuContainer = styled.div`
     display: none;
   }
   @media ${devices.laptop} {
-    display: initial;
+    display: inline-block;
+    min-width: 300px;
+    overflow-y: auto;
   }
 `
 
 const SlideshowContainer = styled.div`
   width: 100%;
   @media ${devices.mobileS} {
-    padding: 40px 0 0 60px;
-  }
-  @media ${devices.laptopL} {
-    padding: 80px 0 0 120px;
+    overflow: auto;
+    height: 100%;
   }
 `
 
@@ -41,10 +41,10 @@ export default function Page(props: Props) {
   return (
     <PageContainer>
       <MenuContainer>
-      <Menu
-        items={props.menu}
-        selectedIndex={0}
-      />
+        <Menu
+          items={props.menu}
+          selectedIndex={0}
+        />
       </MenuContainer>
       <SlideshowContainer>
         <Slideshow
