@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+
 import Gallery from '../Gallery/Gallery.component';
 import Picture from '../Picture/Picture.component';
 import { Picture as P } from '../../types';
 import PictureInfo from '../PictureInfo/PictureInfo.component';
+
+import { devices } from '../../breakpoints';
 
 type Props = {
   pictures: P[],
@@ -23,6 +26,15 @@ const SlideshowContainer = styled.div`
   height: 100%;
 `
 
+const PictureInfoContainer = styled.div`
+  @media ${devices.mobileS} {
+    display: none;
+  }
+  @media ${devices.laptopL} {
+    display: initial;
+  }
+`
+
 const PicturesContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -33,6 +45,25 @@ const PicturesContainer = styled.div`
     }
   }
 `;
+
+const PicturesContainerDesktop = styled(PicturesContainer)`
+  @media ${devices.mobileS} {
+    display: none;
+  }
+  @media ${devices.laptopL} {
+    display: flex;
+  }
+`
+
+const PicturesContainerIpad = styled(PicturesContainer)`
+  @media ${devices.mobileS} {
+    display: initial;
+    width: 100%;
+  }
+  @media ${devices.laptopL} {
+    display: none;
+  }
+`
 
 export default function Slideshow(props: Props) {
   if (props.pictures.length === 0) {
@@ -51,12 +82,14 @@ export default function Slideshow(props: Props) {
 
   return (
     <SlideshowContainer>
-      <PictureInfo
-        artist={selectedPicture.artist}
-        title={selectedPicture.title}
-        technique={selectedPicture.technique}
-      ></PictureInfo>
-      <PicturesContainer>
+      <PictureInfoContainer>
+        <PictureInfo
+          artist={selectedPicture.artist}
+          title={selectedPicture.title}
+          technique={selectedPicture.technique}
+        />
+      </PictureInfoContainer>
+      <PicturesContainerDesktop>
         <ScrollingContainer>
           <Gallery
             pictures={pictures}
@@ -71,7 +104,17 @@ export default function Slideshow(props: Props) {
             selected
           />
         </ScrollingContainer>
-      </PicturesContainer>
+      </PicturesContainerDesktop>
+      <PicturesContainerIpad>
+        <ScrollingContainer>
+          <Gallery
+            pictures={pictures}
+            onClick={handleClick}
+          >
+            {PictureInfo}
+          </Gallery>
+        </ScrollingContainer>
+      </PicturesContainerIpad>
     </SlideshowContainer>
   )
 }

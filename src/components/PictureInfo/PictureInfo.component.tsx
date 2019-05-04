@@ -20,6 +20,7 @@ const TextFormat = styled.div`
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
+  margin-right: 10px;
 `
 
 const Artist = styled(TextFormat)`
