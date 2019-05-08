@@ -36,8 +36,8 @@ export default function Footer(props: Props) {
   return (
     <FooterContainer>
       {props.content.map(m => (
-        <ContentContainer>
-          <Content key={m}>{m}</Content>
+        <ContentContainer key={m}>
+          <Content>{m}</Content>
         </ContentContainer>
       ))}
     </FooterContainer>
