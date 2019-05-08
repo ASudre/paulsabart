@@ -67,7 +67,7 @@ export default function Menu(props: Props) {
   return (
     <div>
       {props.items.map((i, index, arr) => (
-        <div key={i.title}>
+        <div key={`${i.year}_${i.title}`} >
           {showYear(index, arr) ? <YearContainer>
             <YearSeparator></YearSeparator>
             <Year>{i.year}</Year>
