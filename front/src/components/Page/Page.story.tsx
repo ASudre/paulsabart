@@ -28,35 +28,35 @@ storiesOf("Page", module)
         }]}
         menu={[
           {
-            year: 2019,
+            year: '2019',
             title: "Toulouse Lautrec"
           },
           {
-            year: 2019,
+            year: '2019',
             title: "Photos anciennes"
           },
           {
-            year: 2018,
+            year: '2018',
             title: "Vie en rose",
           },
           {
-            year: 2018,
+            year: '2018',
             title: "Test1",
           },
           {
-            year: 2018,
+            year: '2018',
             title: "Test2",
           },
           {
-            year: 2017,
+            year: '2017',
             title: "Test3",
           },
           {
-            year: 2017,
+            year: '2017',
             title: "Test4",
           },
           {
-            year: 2017,
+            year: '2017',
             title: "Test5",
           }
         ]}
@@ -68,35 +68,35 @@ storiesOf("Page", module)
       pictures={[]}
       menu={[
         {
-          year: 2019,
+          year: '2019',
           title: "Toulouse Lautrec"
         },
         {
-          year: 2019,
+          year: '2019',
           title: "Photos anciennes"
         },
         {
-          year: 2018,
+          year: '2018',
           title: "Vie en rose",
         },
         {
-          year: 2018,
+          year: '2018',
           title: "Test1",
         },
         {
-          year: 2018,
+          year: '2018',
           title: "Test2",
         },
         {
-          year: 2017,
+          year: '2017',
           title: "Test3",
         },
         {
-          year: 2017,
+          year: '2017',
           title: "Test4",
         },
         {
-          year: 2017,
+          year: '2017',
           title: "Test5",
         }
       ]}

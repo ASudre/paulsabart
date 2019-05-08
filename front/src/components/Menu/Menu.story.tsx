@@ -7,15 +7,15 @@ storiesOf("Menu", module)
     <Menu
       items={[
         {
-          year: 2019,
+          year: '2019',
           title: "Toulouse Lautrec"
         },
         {
-          year: 2019,
+          year: '2019',
           title: "Photos anciennes"
         },
         {
-          year: 2018,
+          year: '2018',
           title: "Vie en rose",
         }
       ]}

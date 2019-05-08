@@ -8,5 +8,5 @@ export type Picture = {
 
 export type MenuItem = {
   title: string,
-  year: number,
+  year: string,
 }
