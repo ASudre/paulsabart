@@ -9,6 +9,7 @@
     "@types/react-dom": "16.8.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "styled-components": "^4.2.0",
     "typescript": "3.4.4"
@@ -34,6 +35,7 @@
     "@storybook/addon-actions": "^5.0.10",
     "@storybook/addon-viewport": "^5.0.11",
     "@storybook/react": "^5.0.10",
+    "@types/react-router-dom": "^4.3.3",
     "@types/storybook__addon-actions": "^3.4.2",
     "@types/storybook__react": "^4.0.1",
     "@types/styled-components": "4.1.8",

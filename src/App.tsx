@@ -1,4 +1,5 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import styled from 'styled-components';
 
 import Header from './components/Header/Header.component';
@@ -17,7 +18,7 @@ const Gutter = styled.div`
   }
 `
 
-const AppContainer = styled.div`
+const HomeContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -31,11 +32,11 @@ const ContentContainer = styled.div`
   height: 100vh;
 `
 
-export default function App() {
+function Home() {
   const [openedMenu, toggleMenu] = useState(false);
 
   return (
-    <AppContainer>
+    <HomeContainer>
       <Gutter />
       <ContentContainer>
         <Header
@@ -59,22 +60,6 @@ export default function App() {
           {
             alt: "other",
             src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Yves%20(Acrylique).jpg",
-          },
-          {
-            alt: "other",
-            src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Yves%20(Acrylique).jpg",
-          },
-          {
-            alt: "other",
-            src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Yves%20(Acrylique).jpg",
-          },
-          {
-            alt: "other",
-            src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Yves%20(Acrylique).jpg",
-          },
-          {
-            alt: "other",
-            src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Yves%20(Acrylique).jpg",
           }]}
           menu={[
             {
@@ -85,58 +70,6 @@ export default function App() {
               year: 2019,
               title: "Photos anciennes"
             },
-            {
-              year: 2019,
-              title: "Vie en rose",
-            },
-            {
-              year: 2019,
-              title: "Toulouse Lautrec"
-            },
-            {
-              year: 2019,
-              title: "Photos anciennes"
-            },
-            {
-              year: 2018,
-              title: "Vie en rose",
-            },
-            {
-              year: 2018,
-              title: "Toulouse Lautrec"
-            },
-            {
-              year: 2018,
-              title: "Photos anciennes"
-            },
-            {
-              year: 2018,
-              title: "Vie en rose",
-            },
-            {
-              year: 2018,
-              title: "Toulouse Lautrec"
-            },
-            {
-              year: 2018,
-              title: "Photos anciennes"
-            },
-            {
-              year: 2018,
-              title: "Vie en rose",
-            },
-            {
-              year: 2018,
-              title: "Toulouse Lautrec"
-            },
-            {
-              year: 2017,
-              title: "Photos anciennes"
-            },
-            {
-              year: 2017,
-              title: "Vie en rose",
-            }
           ]}
         />
         <Footer
@@ -144,6 +77,14 @@ export default function App() {
         />
       </ContentContainer>
       <Gutter />
-    </AppContainer>
+    </HomeContainer>
+  );
+}
+
+export default function AppRouter() {
+  return (
+    <Router>
+        <Route exact path="/" component={Home} />
+    </Router>
   );
 }
