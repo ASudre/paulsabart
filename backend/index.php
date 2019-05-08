@@ -7,6 +7,6 @@ require __DIR__ . '/src/routes.php';
 
 $server = new \Jacwright\RestServer\RestServer('debug');
 $server->useCors = true;
-$server->allowedOrigin = array('http://localhost:8080');
+$server->allowedOrigin = array('http://localhost:3000');
 $server->addClass('routes');
 $server->handle();
