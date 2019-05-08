@@ -22,6 +22,31 @@ class Routes
     {
         return $this->controller->getFiles();
     }
+    
+    /**
+     * Gets the categories
+     *
+     * @url GET /categories
+     */
+    public function getCategories()
+    {
+        return $this->controller->getCategories();
+    }
+
+    /**
+     * Gets the files by category
+     *
+     * @url GET /files/category/$category
+     */
+    public function getCategoryFiles($category = null)
+    {
+        if ($category) {
+            $files = $this->controller->getCategoryFiles($category);
+        } else {
+            $files = $this->controller->getFiles();
+        }
+        return $files;
+    }
 
     /**
      * Returns a JSON string object to the browser when hitting the root of the domain

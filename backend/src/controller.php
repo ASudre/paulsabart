@@ -23,6 +23,16 @@ class Controller
     {
         return $this->service->select();
     }
+
+    public function getCategories()
+    {
+        return $this->service->selectCategories();
+    }
+
+    public function getCategoryFiles($category)
+    {
+        return $this->service->selectByCategory($category);
+    }
 }
 
 ?>

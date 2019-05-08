@@ -80,7 +80,27 @@ class Service {
   }
 
   public function select() {
-    $result = $this->conn->query("SELECT * from files order by theme desc, category desc, file_name asc");
+    $result = $this->conn->query("SELECT * from files ORDER BY theme DESC, category ASC, inserted_at ASC");
+
+    $data = array();
+    while($row = $result->fetch_assoc()) {
+      array_push($data, $row);
+    }
+    return $data;
+  }
+
+  public function selectCategories() {
+    $result = $this->conn->query("SELECT theme, category FROM files GROUP BY theme, category ORDER BY theme  DESC, category ASC");
+
+    $data = array();
+    while($row = $result->fetch_assoc()) {
+      array_push($data, $row);
+    }
+    return $data;
+  }
+
+  public function selectByCategory($category) {
+    $result = $this->conn->query("SELECT * FROM files WHERE category = '".$category."' ORDER BY inserted_at ASC");
 
     $data = array();
     while($row = $result->fetch_assoc()) {
