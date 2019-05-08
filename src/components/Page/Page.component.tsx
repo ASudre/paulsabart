@@ -44,8 +44,6 @@ const SlideshowContainer = styled.div<{
   width: 100%;
   @media ${devices.mobileS} {
     display: ${p => p.openedMenu ? "none" : ""};
-    // overflow: auto;
-    // height: 100%;
   }
   @media ${devices.laptop} {
     display: inherit;
