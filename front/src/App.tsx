@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import styled from 'styled-components';
 
-// import config from './config';
+import config from './config';
 import Header from './components/Header/Header.component';
 import Page from './components/Page/Page.component';
 import Footer from './components/Footer/Footer.component';
 
 import { devices } from './breakpoints';
+import { MenuItem, ApiCategory } from './types';
 
 const Gutter = styled.div`
   width: 95px;
@@ -33,8 +34,36 @@ const ContentContainer = styled.div`
   height: 100vh;
 `
 
+const apiUrl = `${config.server.host}${config.server.path && '/'}${config.server.path}${config.server.port && ':'}${config.server.port}`;
+
+const getMenu = async (): Promise<ApiCategory[]> => {
+  const response = await fetch(`${apiUrl}/categories`);
+  return await response.json();
+}
+
+const getMenuItemPictures = async (menuTitle: string) => {
+  const response = await fetch(`${apiUrl}/files/category/${menuTitle}`);
+  return await response.json();
+}
+
+const menuMapping = (input: ApiCategory[]): MenuItem[] => input.map(i => ({
+    year: i.theme,
+    title: i.category,
+}));
+
 function Home() {
   const [openedMenu, toggleMenu] = useState(false);
+  const defaultMenu: MenuItem[] = [];
+  const [menu, setMenu] = useState(defaultMenu);
+
+  useEffect(() => {
+    getMenu().then(menu => {
+      setMenu(menuMapping(menu));
+      getMenuItemPictures(menu[0].category).then(pictures => {
+        console.log(pictures);
+      });
+    });
+  }, []);
 
   return (
     <HomeContainer>
@@ -62,16 +91,7 @@ function Home() {
             alt: "other",
             src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Yves%20(Acrylique).jpg",
           }]}
-          menu={[
-            {
-              year: 2019,
-              title: "Toulouse Lautrec"
-            },
-            {
-              year: 2019,
-              title: "Photos anciennes"
-            },
-          ]}
+          menu={menu}
         />
         <Footer
           content={["Toulouse", "Université Paul Sabatier", "Villa du SCAS de 17h à 20h"]}
