@@ -99,8 +99,8 @@ class Service {
     return $data;
   }
 
-  public function selectByCategory($category) {
-    $result = $this->conn->query("SELECT * FROM files WHERE category = '".$category."' ORDER BY inserted_at ASC");
+  public function selectByThemeAndCategory($theme, $category) {
+    $result = $this->conn->query("SELECT * FROM files WHERE theme = '".$theme."' AND category = '".$category."' ORDER BY inserted_at ASC");
 
     $data = array();
     while($row = $result->fetch_assoc()) {

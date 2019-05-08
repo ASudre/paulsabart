@@ -36,16 +36,14 @@ class Routes
     /**
      * Gets the files by category
      *
-     * @url GET /files/category/$category
+     * @url GET /files/theme/$theme/category/$category
      */
-    public function getCategoryFiles($category = null)
+    public function getFilesInThemeAndCategory($theme = null, $category = null)
     {
-        if ($category) {
-            $files = $this->controller->getCategoryFiles($category);
-        } else {
-            $files = $this->controller->getFiles();
+        if (!$theme || !$category) {
+            return [];
         }
-        return $files;
+        return $this->controller->getFilesInThemeAndCategory($theme, $category);
     }
 
     /**

@@ -41,8 +41,8 @@ const getMenu = async (): Promise<ApiCategory[]> => {
   return await response.json();
 }
 
-const getMenuItemPictures = async (menuTitle: string) => {
-  const response = await fetch(`${apiUrl}/files/category/${menuTitle}`);
+const getMenuItemPictures = async (theme: string, category: string) => {
+  const response = await fetch(`${apiUrl}/files/theme/${theme}/category/${category}`);
   return await response.json();
 }
 
@@ -59,7 +59,7 @@ function Home() {
   useEffect(() => {
     getMenu().then(menu => {
       setMenu(menuMapping(menu));
-      getMenuItemPictures(menu[0].category).then(pictures => {
+      getMenuItemPictures(menu[0].theme, menu[0].category).then(pictures => {
         console.log(pictures);
       });
     });

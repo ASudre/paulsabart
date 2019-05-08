@@ -29,9 +29,9 @@ class Controller
         return $this->service->selectCategories();
     }
 
-    public function getCategoryFiles($category)
+    public function getFilesInThemeAndCategory($theme, $category)
     {
-        return $this->service->selectByCategory($category);
+        return $this->service->selectByThemeAndCategory($theme, $category);
     }
 }
 
