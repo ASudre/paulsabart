@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Gallery from '../Gallery/Gallery.component';
@@ -24,6 +24,7 @@ const SlideshowContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   height: 100%;
+  width: 100%;
 `
 
 const PictureInfoContainer = styled.div`

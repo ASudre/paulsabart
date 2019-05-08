@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import Cross from "./Cross.component";
+import CrossIcon from "./CrossIcon.component";
 
-storiesOf("Cross", module)
+storiesOf("CrossIcon", module)
   .add("standard", () => (
-    <Cross />
+    <CrossIcon />
   ))

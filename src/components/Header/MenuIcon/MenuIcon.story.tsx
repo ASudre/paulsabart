@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import MobileMebu from "./MobileMenu.component";
+import MenuIcon from "./MenuIcon.component";
 
-storiesOf("MobileMenu", module)
+storiesOf("MenuIcon", module)
   .add("standard", () => (
-    <MobileMebu />
+    <MenuIcon />
   ))

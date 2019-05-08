@@ -10,17 +10,26 @@ import { devices } from '../../breakpoints';
 type Props = {
   pictures: P[],
   menu: MenuItem[],
+  openedMenu?: boolean,
 }
 
 const PageContainer = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
+  @media ${devices.mobileS} {
+    overflow: auto;
+  }
+  @media ${devices.laptop} {
+    overflow: hidden;
+  }
 `
 
-const MenuContainer = styled.div`
+const MenuContainer = styled.div<{
+  openedMenu?: boolean,
+}>`
   @media ${devices.mobileS} {
-    display: none;
+    display: ${p => !p.openedMenu ? "none" : ""};
   }
   @media ${devices.laptop} {
     display: inline-block;
@@ -29,24 +38,30 @@ const MenuContainer = styled.div`
   }
 `
 
-const SlideshowContainer = styled.div`
+const SlideshowContainer = styled.div<{
+  openedMenu?: boolean,
+}>`
   width: 100%;
   @media ${devices.mobileS} {
-    overflow: auto;
-    height: 100%;
+    display: ${p => p.openedMenu ? "none" : ""};
+    // overflow: auto;
+    // height: 100%;
+  }
+  @media ${devices.laptop} {
+    display: inherit;
   }
 `
 
 export default function Page(props: Props) {
   return (
     <PageContainer>
-      <MenuContainer>
+      <MenuContainer openedMenu={props.openedMenu}>
         <Menu
           items={props.menu}
           selectedIndex={0}
         />
       </MenuContainer>
-      <SlideshowContainer>
+      <SlideshowContainer openedMenu={props.openedMenu}>
         <Slideshow
           pictures={props.pictures}
         />

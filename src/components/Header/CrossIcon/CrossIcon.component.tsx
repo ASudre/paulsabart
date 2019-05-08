@@ -10,12 +10,12 @@ const CrossContainer = styled.div`
   div {
     font-family: 'Open Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
-    font-size: 4em;
+    font-size: 2em;
     cursor: pointer;
   }
   div:after {
     content: '╳';
-    font-size: .75em;
+    font-size: 1em;
     font-weight: 800;
   }
 `
