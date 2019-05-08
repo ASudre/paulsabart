@@ -1,15 +1,16 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-front/node_modules
 node_modules
 backend/vendor
+/.pnp
+.pnp.js
 
 # testing
 /coverage
 
 # production
-front/dist/**/*
+front/build/**/*
 
 # config
 config*.json
