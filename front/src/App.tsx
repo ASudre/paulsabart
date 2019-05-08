@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import styled from 'styled-components';
 
+// import config from './config';
 import Header from './components/Header/Header.component';
 import Page from './components/Page/Page.component';
 import Footer from './components/Footer/Footer.component';
