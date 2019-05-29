@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import Gallery from '../Gallery/Gallery.component';
@@ -84,7 +84,11 @@ export default function Slideshow(props: Props) {
       const s = pictures.find(p => p.src === pictureSrc);
       s && setSelectedPictureSrc(s.src);
     };
-
+  
+  useEffect(() => {
+    setSelectedPictureSrc(pictures[0].src);
+  }, [pictures])
+  
   return (
     <SlideshowContainer>
       <PictureInfoContainer>
@@ -105,7 +109,7 @@ export default function Slideshow(props: Props) {
         </ScrollingContainer>
         <ScrollingContainer>
           <Picture
-            {...(selectedPicture)}
+            {...selectedPicture}
             selected
           />
         </ScrollingContainer>
