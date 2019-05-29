@@ -92,6 +92,7 @@ function Home(props: Props) {
       getMenuItemPictures(menu[menuIndex].year, menu[menuIndex].title).then((p: ApiPicture[]) => {
         setPictures(picturesMapping(p));
       });
+      toggleMenu(false);
     }
   }, [menu, theme, category]);
 
