@@ -10,6 +10,7 @@ import { devices } from '../../breakpoints';
 type Props = {
   pictures: P[],
   menu: MenuItem[],
+  selectedMenuItemIndex: number,
   openedMenu?: boolean,
 }
 
@@ -28,6 +29,7 @@ const PageContainer = styled.div`
 const MenuContainer = styled.div<{
   openedMenu?: boolean,
 }>`
+  padding: 20px;
   @media ${devices.mobileS} {
     display: ${p => !p.openedMenu ? "none" : ""};
   }
@@ -56,7 +58,7 @@ export default function Page(props: Props) {
       <MenuContainer openedMenu={props.openedMenu}>
         <Menu
           items={props.menu}
-          selectedIndex={0}
+          selectedIndex={props.selectedMenuItemIndex}
         />
       </MenuContainer>
       <SlideshowContainer openedMenu={props.openedMenu}>

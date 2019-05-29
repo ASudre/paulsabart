@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from 'styled-components';
 
 import config from './config';
@@ -8,7 +8,7 @@ import Page from './components/Page/Page.component';
 import Footer from './components/Footer/Footer.component';
 
 import { devices } from './breakpoints';
-import { MenuItem, ApiCategory } from './types';
+import { MenuItem, ApiCategory, ApiPicture, Picture } from './types';
 
 const Gutter = styled.div`
   width: 95px;
@@ -47,23 +47,53 @@ const getMenuItemPictures = async (theme: string, category: string) => {
 }
 
 const menuMapping = (input: ApiCategory[]): MenuItem[] => input.map(i => ({
-    year: i.theme,
-    title: i.category,
+  year: i.theme,
+  title: i.category,
 }));
 
-function Home() {
+const picturesMapping = (input: ApiPicture[]): Picture[] => input.map(p => ({
+  src: `${apiUrl}/${config.server.imagesFolder}${p.file_path}/${p.theme}/${p.category}/${p.file_name}`,
+  alt: p.file_name,
+}));
+
+type Props = {
+  match: {
+    params: {
+      theme?: string,
+      category?: string,
+    }
+  }
+}
+
+function Home(props: Props) {
+  const { theme, category } = props.match.params;
+
   const [openedMenu, toggleMenu] = useState(false);
+
   const defaultMenu: MenuItem[] = [];
   const [menu, setMenu] = useState(defaultMenu);
 
+  const defaultPictures: Picture[] = [];
+  const [pictures, setPictures] = useState(defaultPictures);
+
+  const defaultSelectedMenuItemIndex = 0
+  const [selectedMenuItemIndex, setSelectedMenuItemIndex] = useState(defaultSelectedMenuItemIndex);
+
   useEffect(() => {
-    getMenu().then(menu => {
-      setMenu(menuMapping(menu));
-      getMenuItemPictures(menu[0].theme, menu[0].category).then(pictures => {
-        console.log(pictures);
-      });
+    getMenu().then(m => {
+      setMenu(menuMapping(m));
     });
   }, []);
+
+  useEffect(() => {
+    if (menu.length > 0) {
+      const menuIndex = menu.findIndex(m => m.year === theme && m.title === category);
+      setSelectedMenuItemIndex(menuIndex !== -1 ? menuIndex : defaultSelectedMenuItemIndex);
+      getMenuItemPictures(menu[menuIndex].year, menu[menuIndex].title).then((p: ApiPicture[]) => {
+        setPictures(picturesMapping(p));
+      });
+    }
+  }, [menu, theme, category]);
 
   return (
     <HomeContainer>
@@ -76,22 +106,9 @@ function Home() {
         />
         <Page
           openedMenu={openedMenu}
-          pictures={[{
-            alt: "le bain",
-            src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Cecile%20(Acrylique).jpg",
-          },
-          {
-            alt: "terrasse",
-            src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Michel%20(Acrylique).jpg",
-            artist: "Michel Sudre",
-            title: "Véranda",
-            technique: "acrylique",
-          },
-          {
-            alt: "other",
-            src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Yves%20(Acrylique).jpg",
-          }]}
+          pictures={pictures}
           menu={menu}
+          selectedMenuItemIndex={selectedMenuItemIndex}
         />
         <Footer
           content={["Toulouse", "Université Paul Sabatier", "Villa du SCAS de 17h à 20h"]}
@@ -105,7 +122,10 @@ function Home() {
 export default function AppRouter() {
   return (
     <Router>
+      <Switch>
+        <Route path="/theme/:theme/category/:category" component={Home} />
         <Route exact path="/" component={Home} />
+      </Switch>
     </Router>
   );
 }

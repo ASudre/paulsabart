@@ -11,6 +11,7 @@ storiesOf("Page", module)
   .add("standard with 300px height container", () => (
     <FixedHeightDecorator>
       <Page
+        selectedMenuItemIndex={0}
         pictures={[{
           alt: "le bain",
           src: "http://zyriane.free.fr/backend/images/2018-2019/Vie%20en%20Rose/Cecile%20(Acrylique).jpg",
@@ -65,6 +66,7 @@ storiesOf("Page", module)
   ))
   .add("standard with opened menu", () => (
     <Page
+      selectedMenuItemIndex={0}      
       pictures={[]}
       menu={[
         {

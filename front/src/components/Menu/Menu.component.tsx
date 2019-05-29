@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { MenuItem } from '../../types';
+import { Link } from 'react-router-dom';
 
 type Props = {
   items: MenuItem[],
@@ -17,15 +18,20 @@ const Item = styled.div`
   line-height: 1.83;
   letter-spacing: 1.7px;
   text-align: left;
-  color: rgba(0, 0, 0, 0.53);
 `
 
 const SelectedItem = styled(Item)`
   color: black;
 `
 
-const UnSelectedItem = styled(Item)`
-`
+const StyledLink = styled(Link)`
+  color: rgba(0, 0, 0, 0.53);
+  text-decoration: none;
+
+  &:focus, &:hover, &:visited, &:link, &:active {
+      text-decoration: none;
+  }
+`;
 
 const Separator = styled.div`
   width: 52px;
@@ -75,7 +81,9 @@ export default function Menu(props: Props) {
           <Item>
             {props.selectedIndex == index ?
               <SelectedItem>{i.title}</SelectedItem> :
-              <UnSelectedItem>{i.title}</UnSelectedItem>
+              <StyledLink to={`/theme/${i.year}/category/${i.title}`}>
+                {i.title}
+              </StyledLink>
             }
             {(index != arr.length - 1 && !showYear(index + 1, arr))
               && <TitleSeparator></TitleSeparator>}
