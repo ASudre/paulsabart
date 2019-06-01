@@ -8,6 +8,7 @@ backend/vendor
 
 # testing
 /coverage
+backend/images
 
 # production
 front/build/**/*
