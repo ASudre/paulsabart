@@ -18,32 +18,19 @@ class Routes
      *
      * @url GET /
      */
-    public function getFiles()
+    public function routes()
     {
-        return $this->controller->getFiles();
-    }
-    
-    /**
-     * Gets the categories
-     *
-     * @url GET /categories
-     */
-    public function getCategories()
-    {
-        return $this->controller->getCategories();
-    }
-
-    /**
-     * Gets the files by category
-     *
-     * @url GET /files/theme/$theme/category/$category
-     */
-    public function getFilesInThemeAndCategory($theme = null, $category = null)
-    {
-        if (!$theme || !$category) {
-            return [];
+        switch ($_GET['route']) {
+            case 'categories':
+                return $this->controller->getCategories();
+            case 'filesByThemeAndCategories':
+                if (!$_GET['theme'] || !$_GET['category']) {
+                    return [];
+                }
+                return $this->controller->getFilesInThemeAndCategory($_GET['theme'], $_GET['category']);
+            default:
+                return $this->controller->getFiles();
         }
-        return $this->controller->getFilesInThemeAndCategory($theme, $category);
     }
 
     /**

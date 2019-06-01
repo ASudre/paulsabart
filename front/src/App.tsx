@@ -37,12 +37,12 @@ const ContentContainer = styled.div`
 const apiUrl = `${config.server.host}${config.server.port && ':'}${config.server.port}${config.server.path && '/'}${config.server.path}`;
 
 const getMenu = async (): Promise<ApiCategory[]> => {
-  const response = await fetch(`${apiUrl}/categories`);
+  const response = await fetch(`${apiUrl}?route=categories`);
   return await response.json();
 }
 
 const getMenuItemPictures = async (theme: string, category: string) => {
-  const response = await fetch(`${apiUrl}/files/theme/${theme}/category/${category}`);
+  const response = await fetch(`${apiUrl}?route=filesByThemeAndCategories&theme=${theme}&category=${category}`);
   return await response.json();
 }
 
@@ -55,6 +55,11 @@ const picturesMapping = (input: ApiPicture[]): Picture[] => input.map(p => ({
   src: `${apiUrl}/${config.server.imagesFolder}${p.file_path}/${p.theme}/${p.category}/${p.file_name}`,
   alt: p.file_name,
 }));
+
+const getMenuItemIndex = (menu: MenuItem[], theme?: string, category?: string, defaultValue = 0): number => {
+  const menuIndex = menu.findIndex(m => m.year === theme && m.title === category);
+  return menuIndex !== -1 ? menuIndex : defaultValue;
+}
 
 type Props = {
   match: {
@@ -87,9 +92,9 @@ function Home(props: Props) {
 
   useEffect(() => {
     if (menu.length > 0) {
-      const menuIndex = menu.findIndex(m => m.year === theme && m.title === category);
-      setSelectedMenuItemIndex(menuIndex !== -1 ? menuIndex : defaultSelectedMenuItemIndex);
-      getMenuItemPictures(menu[menuIndex].year, menu[menuIndex].title).then((p: ApiPicture[]) => {
+      const menuItemIndex = getMenuItemIndex(menu, theme, category, defaultSelectedMenuItemIndex);
+      setSelectedMenuItemIndex(menuItemIndex);
+      getMenuItemPictures(menu[menuItemIndex].year, menu[menuItemIndex].title).then((p: ApiPicture[]) => {
         setPictures(picturesMapping(p));
       });
       toggleMenu(false);
