@@ -25,12 +25,12 @@ const TextFormat = styled.div`
 `
 
 const Artist = styled(TextFormat)`
-  font-size: 35px;
+  font-size: 26px;
   letter-spacing: 0.9px;
 `
 
 const Title = styled(TextFormat)`
-  font-size: 26px;
+  font-size: 23px;
   letter-spacing: 0.7px;
   text-align: left;
 `
