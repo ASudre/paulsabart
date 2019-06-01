@@ -34,7 +34,7 @@ const ContentContainer = styled.div`
   height: 100vh;
 `
 
-const apiUrl = `${config.server.host}${config.server.path && '/'}${config.server.path}${config.server.port && ':'}${config.server.port}`;
+const apiUrl = `${config.server.host}${config.server.port && ':'}${config.server.port}${config.server.path && '/'}${config.server.path}`;
 
 const getMenu = async (): Promise<ApiCategory[]> => {
   const response = await fetch(`${apiUrl}/categories`);
