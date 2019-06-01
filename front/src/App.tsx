@@ -54,6 +54,7 @@ const menuMapping = (input: ApiCategory[]): MenuItem[] => input.map(i => ({
 const picturesMapping = (input: ApiPicture[]): Picture[] => input.map(p => ({
   src: `${apiUrl}/${config.server.imagesFolder}${p.file_path}/${p.theme}/${p.category}/${p.file_name}`,
   alt: p.file_name,
+  artist: p.comment,
 }));
 
 const getMenuItemIndex = (menu: MenuItem[], theme?: string, category?: string, defaultValue = 0): number => {
