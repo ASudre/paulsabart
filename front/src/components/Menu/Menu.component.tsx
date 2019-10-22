@@ -67,7 +67,7 @@ const YearContainer = styled.div`
 `
 
 const showYear = (index: number, array: MenuItem[]) =>
-  (index == 0 || array[index - 1].year != array[index].year);
+  (index === 0 || array[index - 1].year !== array[index].year);
 
 export default function Menu(props: Props) {
   return (
@@ -79,13 +79,13 @@ export default function Menu(props: Props) {
             <Year>{i.year}</Year>
           </YearContainer> : null}
           <Item>
-            {props.selectedIndex == index ?
+            {props.selectedIndex === index ?
               <SelectedItem>{i.title}</SelectedItem> :
               <StyledLink to={`/theme/${i.year}/category/${i.title}`}>
                 {i.title}
               </StyledLink>
             }
-            {(index != arr.length - 1 && !showYear(index + 1, arr))
+            {(index !== arr.length - 1 && !showYear(index + 1, arr))
               && <TitleSeparator></TitleSeparator>}
           </Item>
         </div>
