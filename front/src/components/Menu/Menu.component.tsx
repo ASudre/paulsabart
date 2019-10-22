@@ -11,7 +11,7 @@ type Props = {
 
 const Item = styled.div`
   font-family: Helvetica Neue, Regular;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
