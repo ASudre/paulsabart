@@ -118,7 +118,7 @@ function Home(props: Props) {
           selectedMenuItemIndex={selectedMenuItemIndex}
         />
         <Footer
-          content={["Toulouse", "Université Paul Sabatier", "Villa du SCAS de 17h à 20h"]}
+          content={["Toulouse", "Université Paul Sabatier", "Villa du SCAS le mardi de 17h à 20h"]}
         />
       </ContentContainer>
       <Gutter />
