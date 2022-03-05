@@ -1,5 +1,5 @@
 {
-    "name": "paulsabart",
+    "name": "paulsabart/backend",
     "description": "CMS for painting class",
     "require-dev": {
         "phpunit/phpunit": "^5"
