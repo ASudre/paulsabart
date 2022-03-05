@@ -7,7 +7,7 @@ import CrossIcon from './CrossIcon/CrossIcon.component';
 import { devices } from '../../breakpoints';
 
 const IconsContainer = styled.div`
-@media ${devices.mobileS} {
+  @media ${devices.mobileS} {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -18,7 +18,7 @@ const IconsContainer = styled.div`
 `
 
 const HeaderContainer = styled.div<{
-    opened?: boolean,
+  opened?: boolean,
 }>`
   @media ${devices.mobileS} {
     box-shadow: ${p => !p.opened ? "0 3px 6px 0 rgba(0, 0, 0, 0.16)" : "none"};
