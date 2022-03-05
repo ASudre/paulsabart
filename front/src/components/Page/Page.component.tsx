@@ -30,9 +30,7 @@ const MenuContainer = styled.div<{
   openedMenu?: boolean,
 }>`
   padding: 20px;
-  @media ${devices.mobileS} {
-    display: ${p => !p.openedMenu ? "none" : ""};
-  }
+  display: ${p => !p.openedMenu ? "none" : ""};
   @media ${devices.laptop} {
     display: inline-block;
     min-width: 300px;

@@ -29,10 +29,6 @@ const PictureContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  @media ${devices.mobileS} {
-    flex-direction: column;
-    align-items: center;
-  }
   @media ${devices.tablet} {
     flex-direction: row;
     align-items: flex-start;
@@ -40,16 +36,10 @@ const PictureContainer = styled.div`
 `;
 
 export default function Gallery(props: Props) {
-  const PictureInfo = props.children || null;
   return (<GalleryContainer>
     {
       props.pictures.map(p =>
         <PictureContainer key={p.src}>
-          {PictureInfo && (<PictureInfo
-            artist={p.artist}
-            title={p.title}
-            technique={p.technique}
-          />)}
           <Picture
             {...p}
             thumbnail={props.thumbnails}
